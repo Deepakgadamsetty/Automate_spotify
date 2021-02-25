@@ -28,15 +28,17 @@ class SpotifyClient(object):
             raise Exception(f"No song found for {artist} = {track}")
 
     def add_song_to_spotify(self, song_id):
-        url = "https://api.spotify.com/v1/me/tracks"
-        response = requests.put(
-            url,
-            json={
-                "ids": [song_id]
-            },
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.api_token}"
-            }
-        )
+        print(f"Inside add song to spotify fun, Song Id: {song_id}")
+        for song_id in song_id:
+            url = "https://api.spotify.com/v1/me/tracks"
+            response = requests.put(
+                url,
+                json={
+                    "ids": [song_id]
+                },
+                headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {self.api_token}"
+                }
+            )
         return response.ok

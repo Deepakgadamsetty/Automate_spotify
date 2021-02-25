@@ -7,9 +7,8 @@ def run():
     # 1. Get a list of our playlists from youtube
     # global spotify_song_id, song
     youtube_client = YouTubeClient('./creds/client_secret.json')
-    spotify_client = SpotifyClient("BQCUTFUBb4uglkTXAtLd0E0WmkgZiVw6cxiySJXOuIkSj23U9so_XyUY9J2Rg71sBnmmcAoGGe2"
-                                   "-IaU8fc-B2shQNPrWj_tp-EPqKQPUzZN3bG2bjOkVpzm6r7CSNRb"
-                                   "-7r3pjN5_c5pIpVplJaw7GCmbt2IcgEHeoDdr")
+    spotify_client = SpotifyClient("BQAFONxZ-DWGU5H"
+                                   "-xjaja1e2Jm4oPVDZad4af8SDGS4KwhQ6ma0KurPekFGg2YCIBCABD_Fj8VNaVMWQHdIcRiozwhoUHxuullaTfQcFSI8lzKIl3AxM79V5KAU0jwPR6PAPO9hZ00apAbWN7k5u4zbYSFBQBPrSFKq-")
     playlists = youtube_client.get_playlist()
 
     # 2. Ask which playlist we want to get the music videos from
@@ -26,8 +25,11 @@ def run():
     print(f"Attempting to add {len(songs)} to spotify")
 
     # 4. Search for the song on Spotify
+    spotify_song_id = []
     for song in songs:
-        spotify_song_id = spotify_client.serach_song(song.artist, song.track)
+        spotify_song_id.append(spotify_client.serach_song(song.artist, song.track))
+
+        print(f"Inside search fun in run class {song.artist} -- {song.track} -- {spotify_song_id}")
 
     # 5. If we found the song, add it to our Spotify liked songs
     if spotify_song_id:
