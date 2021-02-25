@@ -7,8 +7,7 @@ def run():
     # 1. Get a list of our playlists from youtube
     # global spotify_song_id, song
     youtube_client = YouTubeClient('./creds/client_secret.json')
-    spotify_client = SpotifyClient("BQAFONxZ-DWGU5H"
-                                   "-xjaja1e2Jm4oPVDZad4af8SDGS4KwhQ6ma0KurPekFGg2YCIBCABD_Fj8VNaVMWQHdIcRiozwhoUHxuullaTfQcFSI8lzKIl3AxM79V5KAU0jwPR6PAPO9hZ00apAbWN7k5u4zbYSFBQBPrSFKq-")
+    spotify_client = SpotifyClient(os.environ['SPOTIFY_AUTH_TOKEN'])
     playlists = youtube_client.get_playlist()
 
     # 2. Ask which playlist we want to get the music videos from
